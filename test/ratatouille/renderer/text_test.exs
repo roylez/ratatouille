@@ -21,5 +21,16 @@ defmodule Ratatouille.Renderer.TextTest do
                }
              } = render(empty_canvas, %Position{x: 0, y: 0}, "Hello!")
     end
+
+    test "handles double width character correctly" do
+      empty_canvas = Canvas.from_dimensions(10, 10)
+
+      assert %Canvas{
+               cells: %{
+                 %Position{x: 0, y: 0} => %Cell{ch: ?你},
+                 %Position{x: 2, y: 0} => %Cell{ch: ?好},
+               }
+             } = render(empty_canvas, %Position{x: 0, y: 0}, "你好")
+    end
   end
 end
