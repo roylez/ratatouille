@@ -50,7 +50,7 @@ defmodule Ratatouille.Renderer.Text do
 
     canvas
     |> render(canvas.render_box.top_left, text, attrs)
-    |> Canvas.translate(String.length(text), 0)
+    |> Canvas.translate(char_width(text), 0)
   end
 
   defp template_cell(attrs) do
